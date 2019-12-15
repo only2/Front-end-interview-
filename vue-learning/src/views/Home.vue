@@ -1,18 +1,28 @@
 <template>
   <div class="home">
+  	{{message}}
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <VueBasic msg="父组件传值给子组件" @childFun="parentFun"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
+import VueBasic from '@/components/VueBasic'
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+ 	name: 'home',
+ 	data: function() {
+  		return {
+  			message: ''
+  		}
+  	},
+ 	methods: {
+  		parentFun(text) {
+  			this.message = text;
+		}
+	},
+ 	components: {
+		VueBasic
+ 	}
 }
 </script>
