@@ -115,6 +115,21 @@ export default {
 		resetName() {
 			console.log('6666')
 			this.fullname = 'Wang LiLi';
+		},
+		deepClone (obj) {
+			let result = Array.isArray(obj) ? [] : {};
+			if (obj && typeof obj === "object") {
+				for (let key in obj) {
+					if (obj.hasOwnProperty(key)) {
+						if (obj[key] && typeof obj[key] === "object") {
+							result[key] = deepClone(obj[key]);
+						} else {
+							result[key] = obj[key]
+						}
+					}
+				}
+			}
+			return resultl;
 		}
 	}
 

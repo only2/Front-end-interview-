@@ -3,6 +3,8 @@
   	{{message}}
     <img alt="Vue logo" src="../assets/logo.png">
     <VueBasic msg="父组件传值给子组件" @childFun="parentFun"/>
+    <router-view/>
+    <router-view name="test"/>
   </div>
 </template>
 
@@ -15,7 +17,10 @@ export default {
   		return {
   			message: ''
   		}
-  	},
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log('beforeRouteUpdate')
+  },
  	methods: {
   		parentFun(text) {
   			this.message = text;
