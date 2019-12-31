@@ -66,3 +66,27 @@ Person.prototype.sayHello = function() {
 	console.log(this.age);
 }
 var aa = new Person({name: 'lizhixiang', age: '24'});
+function debounce (fn, delay) {
+	let timer = null;
+	return function() {
+		if (timer) {
+			clearTimeout(timer);
+		} else {
+			time = setTimeout(fn, delay);
+		}
+	}
+}
+function throttle(fn, delay) {
+	let isFree = true;
+	return function() {
+		if (isFree) {
+			isFree = false;
+			setTimeout(() => {
+				fn();
+				isFree = true;
+			}, delay)
+		} else {
+			return false;
+		}
+	}
+}
